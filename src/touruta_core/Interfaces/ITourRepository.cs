@@ -8,5 +8,6 @@ namespace Touruta.Core.Interfaces
     {
         Task<IEnumerable<Tour>> GetTours();
         Task<Tour> GetTour(int id);
+        Task PostTour(Tour tour);
     }
 }

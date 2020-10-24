@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Touruta.Core.Data;
 using Touruta.Core.Interfaces;
 using Touruta.Infrastructure.Repositories;
 
@@ -26,6 +27,13 @@ namespace Touruta.Api.Controllers
         public async Task<IActionResult> GetTour(int id)
         {
             var tour = await _tourRepository.GetTour(id);
+            return Ok(tour);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostTour(Tour tour)
+        {
+            await _tourRepository.PostTour(tour);
             return Ok(tour);
         }
     }
