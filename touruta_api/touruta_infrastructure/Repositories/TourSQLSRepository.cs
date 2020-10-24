@@ -20,5 +20,11 @@ namespace Touruta.Infrastructure.Repositories
             var tours = await _context.Tours.ToListAsync();
             return tours;
         }
+        
+        public async Task<Tour> GetTour(int id)
+        {
+            var tour = await _context.Tours.FirstOrDefaultAsync(x => x.IdTour == id);
+            return tour;
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace Touruta.Core.Interfaces
     public interface ITourRepository
     {
         Task<IEnumerable<Tour>> GetTours();
+        Task<Tour> GetTour(int id);
     }
 }

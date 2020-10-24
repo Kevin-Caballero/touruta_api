@@ -21,5 +21,12 @@ namespace Touruta.Api.Controllers
             var tours = await _tourRepository.GetTours();
             return Ok(tours);
         }
+        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTour(int id)
+        {
+            var tour = await _tourRepository.GetTour(id);
+            return Ok(tour);
+        }
     }
 }
