@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A100181A-D525-4836-AA20-7359C8BE541F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Touruta.IntegrationTests", "tests\touruta_integrationTests\Touruta.IntegrationTests.csproj", "{14894033-8301-443E-A47B-0916142DE3F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Touruta.UnitTests", "tests\touruta_unitTests\Touruta.UnitTests.csproj", "{515B83A1-BE29-40AE-BAA4-C90B1F674736}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Touruta.Api", "src\touruta_api\Touruta.Api.csproj", "{E626AAF9-C4CC-46C5-B016-94445C152764}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Touruta.Core", "src\touruta_core\Touruta.Core.csproj", "{A10976CB-1EC2-4722-8C83-F0795DCC8037}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Touruta.Infrastructure", "src\touruta_infrastructure\Touruta.Infrastructure.csproj", "{741F9B9C-FB11-4234-B79F-0BBF1521D5D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14894033-8301-443E-A47B-0916142DE3F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14894033-8301-443E-A47B-0916142DE3F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14894033-8301-443E-A47B-0916142DE3F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14894033-8301-443E-A47B-0916142DE3F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{515B83A1-BE29-40AE-BAA4-C90B1F674736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515B83A1-BE29-40AE-BAA4-C90B1F674736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515B83A1-BE29-40AE-BAA4-C90B1F674736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515B83A1-BE29-40AE-BAA4-C90B1F674736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E626AAF9-C4CC-46C5-B016-94445C152764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E626AAF9-C4CC-46C5-B016-94445C152764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E626AAF9-C4CC-46C5-B016-94445C152764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E626AAF9-C4CC-46C5-B016-94445C152764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10976CB-1EC2-4722-8C83-F0795DCC8037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10976CB-1EC2-4722-8C83-F0795DCC8037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10976CB-1EC2-4722-8C83-F0795DCC8037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10976CB-1EC2-4722-8C83-F0795DCC8037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{741F9B9C-FB11-4234-B79F-0BBF1521D5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741F9B9C-FB11-4234-B79F-0BBF1521D5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741F9B9C-FB11-4234-B79F-0BBF1521D5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741F9B9C-FB11-4234-B79F-0BBF1521D5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14894033-8301-443E-A47B-0916142DE3F2} = {A100181A-D525-4836-AA20-7359C8BE541F}
+		{515B83A1-BE29-40AE-BAA4-C90B1F674736} = {A100181A-D525-4836-AA20-7359C8BE541F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4155C18-E1CD-4E49-8B19-F876452905F7}
+	EndGlobalSection
+EndGlobal
