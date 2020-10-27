@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Touruta.Core.Interfaces;
+using Touruta.Core.Services;
 using Touruta.Infrastructure.Data;
 using Touruta.Infrastructure.Filters;
 using Touruta.Infrastructure.Repositories;
@@ -41,13 +42,15 @@ namespace touruta_api
             {
                 options.SuppressModelStateInvalidFilter = true; //no validar el modelo
             });
-
-
+            
             //
             services.AddDbContext<TourutaContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("touruta_contection_string"))
             );
+
+            services.AddTransient<ITourService,TourService>();
             services.AddTransient<ITourRepository, TourSQLSRepository>();
+            services.AddTransient<IUserRepository, UserSQLSRepository>();
 
             services.AddMvc(option =>
             {
