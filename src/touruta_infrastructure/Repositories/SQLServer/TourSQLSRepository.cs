@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Localization;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Touruta.Core.Data;
+using Touruta.Core.Entities;
 using Touruta.Core.Interfaces;
 using Touruta.Infrastructure.Data;
 

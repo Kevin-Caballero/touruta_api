@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Touruta.Core.Data;
+using Touruta.Core.Entities;
 
 namespace Touruta.Infrastructure.Data.Configurations
 {

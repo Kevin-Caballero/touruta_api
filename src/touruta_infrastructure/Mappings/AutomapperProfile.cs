@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Touruta.Core.Data;
 using Touruta.Core.DTOs;
+using Touruta.Core.Entities;
 
 namespace Touruta.Infrastructure.Mappings
 {

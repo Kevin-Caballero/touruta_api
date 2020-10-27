@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Touruta.Core.Data;
+using Touruta.Core.Entities;
 
 namespace Touruta.Core.Interfaces
 {

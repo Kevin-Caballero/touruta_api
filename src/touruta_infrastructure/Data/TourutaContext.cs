@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Touruta.Core.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Touruta.Core.Entities;
 using Touruta.Infrastructure.Data.Configurations;
 
 namespace Touruta.Infrastructure.Data

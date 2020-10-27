@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Touruta.Core.Data
+namespace Touruta.Core.Entities
 {
     public partial class Role
     {

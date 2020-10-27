@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Touruta.Core.Data
+namespace Touruta.Core.Entities
 {
     public partial class Tour
     {

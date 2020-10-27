@@ -1,14 +1,11 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Touruta.Api.Responses;
-using Touruta.Core.Data;
 using Touruta.Core.DTOs;
+using Touruta.Core.Entities;
 using Touruta.Core.Interfaces;
-using Touruta.Infrastructure.Repositories;
 
 namespace Touruta.Api.Controllers
 {
