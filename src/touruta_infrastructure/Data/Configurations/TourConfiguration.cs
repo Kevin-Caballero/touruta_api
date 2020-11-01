@@ -8,8 +8,13 @@ namespace Touruta.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Tour> builder)
         {
-            builder.HasKey(e => e.IdTour)
-                    .HasName("PK_Publicacion");
+            builder.ToTable("Tours");
+
+            builder.HasKey(e => e.Id)
+                .HasName("PK_Tour");
+            
+            builder.Property(e => e.Id)
+                .HasColumnName("IdTour");
 
             builder.Property(e => e.Audio)
                 .HasMaxLength(500)

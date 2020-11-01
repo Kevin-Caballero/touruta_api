@@ -4,15 +4,14 @@ using System.Collections.Generic;
 
 namespace Touruta.Core.Entities
 {
-    public partial class User
+    public partial class User :  BaseEntity
     {
         public User()
         {
             Comments = new HashSet<Comment>();
             Tours = new HashSet<Tour>();
         }
-
-        public int IdUser { get; set; }
+        
         public string Name { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

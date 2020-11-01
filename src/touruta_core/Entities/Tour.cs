@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace Touruta.Core.Entities
 {
-    public partial class Tour
+    public partial class Tour : BaseEntity
     {
         public Tour()
         {
             Comments = new HashSet<Comment>();
         }
-
-        public int IdTour { get; set; }
+        
         public int IdUser { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }

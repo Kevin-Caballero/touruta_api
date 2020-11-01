@@ -54,7 +54,7 @@ namespace Touruta.Api.Controllers
         public async Task<IActionResult> PutTour(int id, TourDto tourDto)
         {
             var tour = _mapper.Map<Tour>(tourDto);
-            tour.IdTour = id;
+            tour.Id = id;
 
             var result = await _tourService.PutTour(tour);
             var response = new ApiResponse<bool>(result);

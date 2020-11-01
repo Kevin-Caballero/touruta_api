@@ -49,8 +49,8 @@ namespace touruta_api
             );
 
             services.AddTransient<ITourService,TourService>();
-            services.AddTransient<ITourRepository, TourSQLSRepository>();
-            services.AddTransient<IUserRepository, UserSQLSRepository>();
+            services.AddTransient<IUnitOfWork,UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 
             services.AddMvc(option =>
             {

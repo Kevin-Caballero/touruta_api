@@ -8,9 +8,9 @@ namespace Touruta.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.HasKey(e => e.IdRol);
+            builder.HasKey(e => e.Id);
 
-            builder.Property(e => e.IdRol).ValueGeneratedNever();
+            builder.Property(e => e.Id).ValueGeneratedNever();
 
             builder.Property(e => e.Rol)
                         .HasMaxLength(50)

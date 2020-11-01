@@ -8,7 +8,7 @@ namespace Touruta.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(e => e.IdUser)
+            builder.HasKey(e => e.Id)
                     .HasName("PK_Usuario");
 
             builder.Property(e => e.BirthDate).HasColumnType("date");

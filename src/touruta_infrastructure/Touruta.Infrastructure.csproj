@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Repositories\MySQL" />
+    <Folder Include="Repositories\SQLServer" />
   </ItemGroup>
 
 </Project>

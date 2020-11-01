@@ -8,10 +8,10 @@ namespace Touruta.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
-            builder.HasKey(e => e.IdComment)
+            builder.HasKey(e => e.Id)
                     .HasName("PK_Comentario");
 
-            builder.Property(e => e.IdComment).ValueGeneratedNever();
+            builder.Property(e => e.Id).ValueGeneratedNever();
 
             builder.Property(e => e.Date).HasColumnType("datetime");
 
