@@ -10,11 +10,10 @@ namespace Touruta.Infrastructure.Data.Configurations
         {
             builder.ToTable("Tours");
 
-            builder.HasKey(e => e.Id)
-                .HasName("PK_Tour");
+            builder.HasKey(e => e.Id).HasName("PK_Tour");
             
             builder.Property(e => e.Id)
-                .HasColumnName("IdTour");
+                .HasColumnName("Id");
 
             builder.Property(e => e.Audio)
                 .HasMaxLength(500)

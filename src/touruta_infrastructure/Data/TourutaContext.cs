@@ -6,14 +6,10 @@ namespace Touruta.Infrastructure.Data
 {
     public partial class TourutaContext : DbContext
     {
-        public TourutaContext()
-        {
-        }
+        public TourutaContext() {}
 
         public TourutaContext(DbContextOptions<TourutaContext> options)
-            : base(options)
-        {
-        }
+            : base(options) {}
 
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
