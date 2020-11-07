@@ -20,9 +20,4 @@
     <ProjectReference Include="..\touruta_core\Touruta.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\MySQL" />
-    <Folder Include="Repositories\SQLServer" />
-  </ItemGroup>
-
 </Project>
