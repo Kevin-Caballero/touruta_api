@@ -8,7 +8,7 @@ namespace Touruta.Infrastructure.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly TourutaContext _context;
-        private readonly IRepository<Tour> _tourRepository;
+        private readonly ITourRepository _tourRepository;
         private readonly IRepository<User> _userRepository; 
         private readonly IRepository<Comment> _commentRepository; 
         
@@ -17,7 +17,7 @@ namespace Touruta.Infrastructure.Repositories
             _context = context;
         }
 
-        public IRepository<Tour> TourRepository => _tourRepository ?? new BaseRepository<Tour>(_context);
+        public ITourRepository TourRepository => _tourRepository ?? new TourRepository(_context);
         public IRepository<User> UserRepository => _userRepository ?? new BaseRepository<User>(_context);
         public IRepository<Comment> CommentRepository => _commentRepository ?? new BaseRepository<Comment>(_context);
         

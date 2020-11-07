@@ -23,9 +23,9 @@ namespace Touruta.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTours()
+        public IActionResult GetTours()
         {
-            var tours = await _tourService.GetTours();
+            var tours = _tourService.GetTours();
             var toursDto = _mapper.Map<IEnumerable<TourDto>>(tours);
             var response = new ApiResponse<IEnumerable<TourDto>>(toursDto);
             return Ok(response);

@@ -6,7 +6,7 @@ namespace Touruta.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<Tour> TourRepository { get; }
+        ITourRepository TourRepository { get; }
         IRepository<User> UserRepository { get; }
         IRepository<Comment> CommentRepository { get; }
         void SaveChanges();
