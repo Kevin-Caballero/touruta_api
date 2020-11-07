@@ -4,12 +4,9 @@ using Touruta.Core.Entities;
 
 namespace Touruta.Core.Interfaces
 {
-    public interface ITourRepository
+    public interface ITourRepository : IRepository<Tour>
     {
-        Task<IEnumerable<Tour>> GetTours();
-        Task<Tour> GetTour(int id);
-        Task PostTour(Tour tour);
-        Task<bool> PutTour(Tour tour);
-        Task<bool> DeleteTour(int id);
+        Task<IEnumerable<Tour>> GetToursByUser(int userId);
+        Task<Tour> GetLastTourByUser(int userId);
     }
 }
