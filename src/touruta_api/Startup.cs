@@ -3,17 +3,19 @@ using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Touruta.Core.CustomEntities;
 using Touruta.Core.Interfaces;
 using Touruta.Core.Services;
 using Touruta.Infrastructure.Data;
 using Touruta.Infrastructure.Filters;
+using Touruta.Infrastructure.Interfaces;
 using Touruta.Infrastructure.Repositories;
+using Touruta.Infrastructure.Services;
 
 namespace touruta_api
 {
@@ -35,14 +37,17 @@ namespace touruta_api
                 {
                     options.Filters.Add<GlobalExceptionFilter>();
                 }).AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            )
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                })
             .ConfigureApiBehaviorOptions(options =>
             {
-                options.SuppressModelStateInvalidFilter = true; //no validar el modelo
+                //options.SuppressModelStateInvalidFilter = true; //! no validar el modelo
             });
+
+            services.Configure<PaginationOptions>(Configuration.GetSection("Pagination")); //! mapear configuracion paginacion appsetings.json
             
-            //
             services.AddDbContext<TourutaContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("touruta_contection_string"))
             );
@@ -50,6 +55,13 @@ namespace touruta_api
             services.AddTransient<ITourService,TourService>();
             services.AddTransient<IUnitOfWork,UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddSingleton<IUriService>(provider =>
+            {
+                var accesor = provider.GetRequiredService<IHttpContextAccessor>();
+                var request = accesor.HttpContext.Request;
+                var absoluteUri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
+                return new UriService(absoluteUri);
+            });
 
             services.AddMvc(option =>
             {
