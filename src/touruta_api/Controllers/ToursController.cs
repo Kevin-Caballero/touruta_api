@@ -15,6 +15,7 @@ using Touruta.Infrastructure.Interfaces;
 
 namespace Touruta.Api.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ToursController : ControllerBase
@@ -30,8 +31,13 @@ namespace Touruta.Api.Controllers
             _uriService = uriService;
         }
 
+        /// <summary>
+        /// Retrieve all tours
+        /// </summary>
+        /// <param name="filters">Filters to apply in case of pagination or to search specifically</param>
+        /// <returns></returns>
         [HttpGet(Name = nameof(GetTours))]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<TourDto>>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public IActionResult GetTours([FromQuery]TourQueryFilter filters)
         {
