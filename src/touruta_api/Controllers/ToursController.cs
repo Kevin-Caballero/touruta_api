@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Touruta.Api.Responses;
 using Touruta.Core.DTOs;
 using Touruta.Core.Entities;
@@ -33,6 +34,19 @@ namespace Touruta.Api.Controllers
             var tours = _tourService.GetTours(filters);
             var toursDto = _mapper.Map<IEnumerable<TourDto>>(tours);
             var response = new ApiResponse<IEnumerable<TourDto>>(toursDto);
+
+            var metadata = new
+            {
+                tours.TotalCount,
+                tours.PageSize,
+                tours.CurrentPage,
+                tours.TotalPages,
+                tours.HasNextPage,
+                tours.HasPreviousPage
+            };
+            
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+            
             return Ok(response);
         }
 
