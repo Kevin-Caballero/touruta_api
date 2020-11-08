@@ -1,14 +1,11 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using Touruta.Api.Responses;
 using Touruta.Core.DTOs;
 using Touruta.Core.Entities;
 using Touruta.Core.Interfaces;
-using Touruta.Core.QueryFilters;
 
 namespace Touruta.Api.Controllers
 {
@@ -26,11 +23,9 @@ namespace Touruta.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public IActionResult GetTours([FromQuery]TourQueryFilter filters)
+        public IActionResult GetTours()
         {
-            var tours = _tourService.GetTours(filters);
+            var tours = _tourService.GetTours();
             var toursDto = _mapper.Map<IEnumerable<TourDto>>(tours);
             var response = new ApiResponse<IEnumerable<TourDto>>(toursDto);
             return Ok(response);
