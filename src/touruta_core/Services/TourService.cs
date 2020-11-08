@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Touruta.Core.Entities;
 using Touruta.Core.Exceptions;
 using Touruta.Core.Interfaces;
-using Touruta.Core.QueryFilters;
 
 namespace Touruta.Core.Services
 {
@@ -18,23 +17,9 @@ namespace Touruta.Core.Services
             _unitOfWork = unitOfWork;
         }
         
-        public IEnumerable<Tour> GetTours(TourQueryFilter filters)
+        public IEnumerable<Tour> GetTours()
         {
-            var tours = _unitOfWork.TourRepository.GetAll();
-            if (filters.UserId != null)
-            {
-                tours = tours.Where(x => x.IdUser == filters.UserId);
-            }
-            if (filters.Date != null)
-            {
-                tours = tours.Where(x => x.Date.ToShortDateString() == filters.Date?.ToShortDateString());
-            }
-            if (filters.Description != null)
-            {
-                tours = tours.Where(x => x.Description.ToLower().Contains(filters.Description.ToLower()));
-            }
-
-            return tours;
+            return _unitOfWork.TourRepository.GetAll();
         }
 
         public async Task<Tour> GetTour(int id)
