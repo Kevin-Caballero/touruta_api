@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Touruta.Core.CustomEntities;
 using Touruta.Core.Entities;
 using Touruta.Core.Exceptions;
@@ -13,14 +14,19 @@ namespace Touruta.Core.Services
     public class TourService : ITourService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly PaginationOptions _paginationOptions;
         
-        public TourService(IUnitOfWork unitOfWork)
+        public TourService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options)
         {
             _unitOfWork = unitOfWork;
+            _paginationOptions = options.Value;
         }
         
         public PagedList<Tour> GetTours(TourQueryFilter filters)
         {
+            filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
+            filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize; 
+            
             var tours = _unitOfWork.TourRepository.GetAll();
             if (filters.UserId != null)
             {
