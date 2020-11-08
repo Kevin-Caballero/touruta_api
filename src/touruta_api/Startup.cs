@@ -96,6 +96,7 @@ namespace touruta_api
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1.0.0/swagger.json", "Touruta API");
+                options.RoutePrefix = string.Empty;
             });
             app.UseHttpsRedirection();
             app.UseRouting();
