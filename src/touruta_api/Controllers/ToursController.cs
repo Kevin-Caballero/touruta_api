@@ -4,35 +4,63 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Touruta.Api.Responses;
+using Touruta.Core.CustomEntities;
 using Touruta.Core.DTOs;
 using Touruta.Core.Entities;
 using Touruta.Core.Interfaces;
 using Touruta.Core.QueryFilters;
+using Touruta.Infrastructure.Interfaces;
 
 namespace Touruta.Api.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ToursController : ControllerBase
     {
         private readonly ITourService _tourService;
         private readonly IMapper _mapper;
+        private readonly IUriService _uriService;
 
-        public ToursController(ITourService tourService, IMapper mapper)
+        public ToursController(ITourService tourService, IMapper mapper, IUriService uriService)
         {
             _tourService = tourService;
             _mapper = mapper;
+            _uriService = uriService;
         }
 
-        [HttpGet]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
+        /// <summary>
+        /// Retrieve all tours
+        /// </summary>
+        /// <param name="filters">Filters to apply in case of pagination or to search specifically</param>
+        /// <returns></returns>
+        [HttpGet(Name = nameof(GetTours))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<TourDto>>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public IActionResult GetTours([FromQuery]TourQueryFilter filters)
         {
             var tours = _tourService.GetTours(filters);
             var toursDto = _mapper.Map<IEnumerable<TourDto>>(tours);
-            var response = new ApiResponse<IEnumerable<TourDto>>(toursDto);
+
+            var metadata = new Metadata
+            {
+                TotalCount = tours.TotalCount,
+                PageSize= tours.PageSize,
+                CurrentPage= tours.CurrentPage,
+                TotalPages= tours.TotalPages,
+                HasNextPage = tours.HasNextPage,
+                HasPreviousPage = tours.HasPreviousPage,
+                NexPageUrl = _uriService.GetTourPaginationUri(filters, Url.RouteUrl(nameof(GetTours))).ToString(),
+                PreviousPageUrl = _uriService.GetTourPaginationUri(filters, Url.RouteUrl(nameof(GetTours))).ToString()
+            };
+            var response = new ApiResponse<IEnumerable<TourDto>>(toursDto)
+            {
+                Meta = metadata
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+            
             return Ok(response);
         }
 
